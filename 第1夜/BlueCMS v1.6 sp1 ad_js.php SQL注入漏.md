@@ -83,19 +83,19 @@ int intval ( mixed $var [, int $base = 10 ] )
 
 `'`验证
 
-![单引号判断]($res/%E5%8D%95%E5%BC%95%E5%8F%B7%E5%88%A4%E6%96%AD.png)
+![单引号判断](./%E5%8D%95%E5%BC%95%E5%8F%B7%E5%88%A4%E6%96%AD.png)
 
 ### 验证POC
 
 访问POC
 
-![验证POC]($res/%E9%AA%8C%E8%AF%81POC.png)
+![验证POC](./%E9%AA%8C%E8%AF%81POC.png)
 
 ### 漏洞修复
 
 trim()函数修改为intval()函数，重新访问POC
 
-![修复]($res/%E4%BF%AE%E5%A4%8D.png)
+![修复](./%E4%BF%AE%E5%A4%8D.png)
 
 ### 其他漏洞
 
