@@ -59,10 +59,10 @@ trim(_string_,_charlist_)
 
 ### 语法
 
-```
-int intval ( mixed $var [, int $base = 10 ] )
 
-```
+intval ( mixed $var [, int $base = 10 ] )
+
+
 通过使用指定的进制 base 转换（默认是十进制），返回变量 var 的 integer 数值。 intval() 不能用于 object，否则会产生 E_NOTICE 错误并返回 1。
 
 | 参数 | 描述 |
